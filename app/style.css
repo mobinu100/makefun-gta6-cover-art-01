@@ -1,0 +1,94 @@
+:root {
+  --bg: #12081f;
+  --panel: #1d1030;
+  --panel-2: #251640;
+  --ink: #fff6ec;
+  --muted: #c9b8e6;
+  --line: #3d2560;
+  --pink: #ff2e88;
+  --orange: #ff7a18;
+  --teal: #19e3c2;
+  --gold: #ffc93c;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 80% -10%, #3b1155 0%, transparent 60%),
+    radial-gradient(900px 500px at 0% 0%, #571b2e 0%, transparent 55%), var(--bg);
+  color: var(--ink);
+  font: 15px/1.5 "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+.topbar {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px;
+  padding: 18px 22px 10px;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark {
+  display: inline-grid; place-items: center;
+  width: 38px; height: 38px; border-radius: 9px;
+  background: linear-gradient(135deg, var(--pink), var(--orange) 55%, var(--gold));
+  color: #fff; font-weight: 900; font-size: 17px; letter-spacing: .5px;
+  box-shadow: 0 0 22px rgba(255, 46, 136, .55);
+}
+.brand-name { font-weight: 900; font-size: 21px; letter-spacing: 2.5px; }
+.tagline { margin: 0; color: var(--muted); font-size: 13.5px; }
+.studio {
+  display: grid; grid-template-columns: minmax(320px, 1fr) 340px;
+  gap: 20px; padding: 8px 22px 22px; align-items: start;
+}
+.preview-col { min-width: 0; }
+.preview-wrap {
+  background: #000; border: 1px solid var(--line); border-radius: 14px;
+  overflow: hidden; box-shadow: 0 18px 50px rgba(0, 0, 0, .55);
+}
+#preview { display: block; width: 100%; height: auto; cursor: grab; touch-action: none; }
+#preview:active { cursor: grabbing; }
+.preview-hint {
+  padding: 9px 12px; font-size: 13px; color: var(--muted);
+  background: var(--panel); border-top: 1px solid var(--line);
+}
+.panel-bar { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.panel-chip {
+  border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+  border-radius: 999px; padding: 6px 12px; font-size: 13px; cursor: pointer;
+}
+.panel-chip.active { border-color: var(--pink); background: #3a1440; box-shadow: 0 0 0 1px var(--pink); }
+.controls { display: grid; gap: 14px; }
+.card {
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px;
+}
+.card h2 { margin: 0 0 10px; font-size: 14px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold); }
+.card label { display: grid; gap: 5px; margin: 10px 0; font-size: 13.5px; color: var(--muted); }
+.card input[type="text"], .card select {
+  background: #140a24; color: var(--ink); border: 1px solid var(--line);
+  border-radius: 8px; padding: 8px 10px; font: inherit; width: 100%;
+}
+.card input[type="range"] { width: 100%; accent-color: var(--pink); }
+.val { color: var(--ink); font-weight: 700; }
+.upload-btn, .card button {
+  display: inline-block; border: 0; border-radius: 9px; padding: 9px 14px;
+  background: linear-gradient(135deg, var(--pink), var(--orange));
+  color: #fff; font: 700 14px/1 inherit; cursor: pointer; text-align: center;
+}
+.upload-btn:hover, .card button:hover { filter: brightness(1.12); }
+.thumb-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.thumb {
+  width: 64px; height: 48px; object-fit: cover; border-radius: 7px; cursor: pointer;
+  border: 2px solid transparent; background: #000;
+}
+.thumb.active { border-color: var(--gold); box-shadow: 0 0 10px rgba(255, 201, 60, .6); }
+.note { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
+.size-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.size-btn { padding: 10px 6px; font-size: 13px; }
+.export-card { border-color: #6b3a10; }
+.foot { padding: 0 22px 22px; color: var(--muted); font-size: 12.5px; }
+.foot p { margin: 0; }
+@media (max-width: 900px) {
+  .studio { grid-template-columns: 1fr; }
+}
+body.shot { background: #000; }
+body.shot .topbar, body.shot .controls, body.shot .foot, body.shot .preview-hint, body.shot .panel-bar { display: none; }
+body.shot .studio { display: block; padding: 0; }
+body.shot .preview-wrap { border: 0; border-radius: 0; box-shadow: none; }
+body.shot #preview { width: 100vw; height: 100vh; object-fit: contain; }
